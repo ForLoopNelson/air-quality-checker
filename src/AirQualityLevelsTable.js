@@ -2,12 +2,16 @@ import React from "react"
 
 const AirQualityLevelsTable = () => {
   const levels = [
-    { range: "0 - 50", level: "Good" },
-    { range: "51 - 100", level: "Moderate" },
-    { range: "101 - 150", level: "Unhealthy for Sensitive Groups" },
-    { range: "151 - 200", level: "Unhealthy" },
-    { range: "201 - 300", level: "Very Unhealthy" },
-    { range: "301 and higher", level: "Hazardous" },
+    { range: "0 - 50", level: "Good", color: "bg-success" },
+    { range: "51 - 100", level: "Moderate", color: "bg-warning" },
+    {
+      range: "101 - 150",
+      level: "Unhealthy for Sensitive Groups",
+      color: "bg-orange",
+    },
+    { range: "151 - 200", level: "Unhealthy", color: "bg-danger" },
+    { range: "201 - 300", level: "Very Unhealthy", color: "bg-very-unhealthy" },
+    { range: "301 and higher", level: "Hazardous", color: "bg-hazardous" },
   ]
 
   return (
@@ -22,8 +26,11 @@ const AirQualityLevelsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {levels.map(({ range, level }, index) => (
+            {levels.map(({ range, level, color }, index) => (
               <tr key={index}>
+                <td>
+                  <div className={`color-box ${color}`}></div>
+                </td>
                 <td>{range}</td>
                 <td>{level}</td>
               </tr>
